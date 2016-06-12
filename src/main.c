@@ -3,7 +3,6 @@
 static Window *s_window;
 
 static TextLayer *textLayerHeader;
-static TextLayer *textLayerLogo;
 static TextLayer *textLayerFooter;
 
 static Layer *layerLogo;
@@ -28,36 +27,25 @@ static const char *MONTHS[12] = {
 
 static void app_timer_callback(void *data)
 {
-  // text_layer_set_text(s_oneplus_text, "ONEPLUS");
-  // text_layer_set_text(s_hour_text, "1");
-  // text_layer_set_text(s_neversettle_text, "NEVER SETTLE");
 }
 
 static void accel_tap_handler(AccelAxisType axis, int32_t direction)
 {
-  // time_t now = time(NULL);
-  // struct tm *theTime = localtime(&now);
-  // static char timeBuffer[10];
-  // static char dayBuffer[10];
-  //
-  // printf("%u\t%u", axis, (int)direction);
-  //
-  // clock_copy_time_string(timeBuffer, sizeof(timeBuffer));
-  // text_layer_set_text(s_oneplus_text, timeBuffer);
-  // text_layer_set_text(s_neversettle_text, MONTHS[theTime->tm_mon]);
-  // snprintf(dayBuffer, sizeof(dayBuffer), "%i", theTime->tm_mday);
-  // text_layer_set_text(s_hour_text, dayBuffer);
-  //
-  // printf("%i:%i:%i", theTime->tm_hour, theTime->tm_min, theTime->tm_sec);
-  //
-  // app_timer_register(5000, app_timer_callback, NULL);
 }
 
-static void minute_layer_update_proc(Layer *layer, GContext *ctx)
+static void logo_layer_update_proc(Layer *layer, GContext *ctx)
 {
   graphics_context_set_fill_color(ctx, GColorWhite);
-  graphics_fill_rect(ctx, GRect(0, 11, 30, 8), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(11, 0, 8, 30), 0, GCornerNone);
+
+  /* Square */
+  graphics_fill_rect(ctx, GRect(0, 11, 48, 8), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(0, 19, 8, 59), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(0, 78, 76, 8), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(68, 38, 8, 40), 0, GCornerNone);
+
+  /* Plus */
+  graphics_fill_rect(ctx, GRect(57, 11, 30, 8), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(68, 0, 8, 30), 0, GCornerNone);
 }
 
 static void prv_window_load(Window *window) {
@@ -66,6 +54,12 @@ static void prv_window_load(Window *window) {
 
   fontLatoBlack = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_LATO_BLACK_24));
   fontRokkitBold = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_ROKKITT_BOLD_64));
+
+  /* LOGO */
+  layerLogo = layer_create(GRect(34, 34, 87, 87));
+
+  layer_add_child(window_get_root_layer(s_window), layerLogo);
+  layer_set_update_proc(layerLogo, logo_layer_update_proc);
 
   /* HEADER */
   textLayerHeader = text_layer_create(GRect(0, 4, bounds.size.w, 29));
@@ -77,6 +71,16 @@ static void prv_window_load(Window *window) {
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerHeader);
 
+  /* LOGO TEXT */
+  // textLayerLogo = text_layer_create(GRect(60, 47, 24, 73));
+  // text_layer_set_font(textLayerLogo, fontRokkitBold);
+  // text_layer_set_text_color(textLayerLogo, GColorWhite);
+  // text_layer_set_background_color(textLayerLogo, GColorDarkCandyAppleRed);
+  // text_layer_set_text_alignment(textLayerLogo, GTextAlignmentCenter);
+  // text_layer_set_text(textLayerLogo, "1");
+  //
+  // layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerLogo);
+
   /* FOOTER */
   textLayerFooter = text_layer_create(GRect(0, 130, bounds.size.w, 29));
   text_layer_set_font(textLayerFooter, fontLatoBlack);
@@ -87,20 +91,13 @@ static void prv_window_load(Window *window) {
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerFooter);
 
-  /* LOGO TEXT (body) */
-  textLayerLogo = text_layer_create(GRect(40, 38, 66, 73));
-  text_layer_set_font(textLayerLogo, fontRokkitBold);
-  text_layer_set_text_color(textLayerLogo, GColorWhite);
-  text_layer_set_background_color(textLayerLogo, GColorDarkCandyAppleRed);
-  text_layer_set_text_alignment(textLayerLogo, GTextAlignmentCenter);
-  text_layer_set_text(textLayerLogo, "1");
-
-  layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerLogo);
-
   accel_tap_service_subscribe(accel_tap_handler);
 }
 
 static void prv_window_unload(Window *window) {
+  text_layer_destroy(textLayerFooter);
+  text_layer_destroy(textLayerHeader);
+  layer_destroy(layerLogo);
 }
 
 static void prv_init(void) {

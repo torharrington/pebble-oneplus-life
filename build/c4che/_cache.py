@@ -17,4 +17,4 @@ REQUESTED_PLATFORMS = [u'basalt']
 RESOURCES_JSON = [{u'type': u'font', u'name': u'LATO_BLACK_24', u'file': u'fonts/Lato-Black.ttf'}, {u'type': u'font', u'name': u'ROKKITT_BOLD_64', u'file': u'fonts/Rokkitt-Bold.ttf'}]
 SUPPORTED_PLATFORMS = ['aplite', 'basalt', 'chalk']
 TARGET_PLATFORMS = ['basalt']
-TIMESTAMP = 1465763310
+TIMESTAMP = 1465769490
