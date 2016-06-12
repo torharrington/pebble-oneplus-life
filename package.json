@@ -1,6 +1,6 @@
 {
   "name": "oneplus",
-  "author": "MakeAwesomeHappen",
+  "author": "Tor Harrington",
   "version": "1.0.0",
   "keywords": ["pebble-app"],
   "private": true,
@@ -23,23 +23,13 @@
       "media": [
         {
           "type": "font",
-          "name": "LATO_REGULAR_18",
-          "file": "fonts/Lato-Regular.ttf"
-        },
-        {
-          "type": "font",
-          "name": "LATO_BOLD_18",
-          "file": "fonts/Lato-Bold.ttf"
+          "name": "LATO_BLACK_24",
+          "file": "fonts/Lato-Black.ttf"
         },
         {
           "type": "font",
           "name": "ROKKITT_BOLD_64",
           "file": "fonts/Rokkitt-Bold.ttf"
-        },
-        {
-          "type": "bitmap",
-          "name": "SIGAL_BITMAP",
-          "file": "bitmaps/sigal.png"
         }
       ]
     }

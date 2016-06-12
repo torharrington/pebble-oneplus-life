@@ -1,0 +1,38 @@
+{
+    "targetPlatforms": [
+        "basalt"
+    ], 
+    "displayName": "oneplus", 
+    "name": "oneplus", 
+    "messageKeys": {
+        "dummy": 10000
+    }, 
+    "companyName": "Tor Harrington", 
+    "enableMultiJS": true, 
+    "versionLabel": "1.0", 
+    "capabilities": [], 
+    "sdkVersion": "3", 
+    "appKeys": {
+        "dummy": 10000
+    }, 
+    "longName": "oneplus", 
+    "shortName": "oneplus", 
+    "watchapp": {
+        "watchface": true
+    }, 
+    "resources": {
+        "media": [
+            {
+                "type": "font", 
+                "name": "LATO_BLACK_24", 
+                "file": "fonts/Lato-Black.ttf"
+            }, 
+            {
+                "type": "font", 
+                "name": "ROKKITT_BOLD_64", 
+                "file": "fonts/Rokkitt-Bold.ttf"
+            }
+        ]
+    }, 
+    "uuid": "e71435f5-87fe-4e67-9ec3-d78b5cf8349c"
+}
