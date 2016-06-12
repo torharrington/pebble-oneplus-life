@@ -1,0 +1,47 @@
+{
+  "name": "oneplus",
+  "author": "MakeAwesomeHappen",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "oneplus",
+    "uuid": "e71435f5-87fe-4e67-9ec3-d78b5cf8349c",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "basalt"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "dummy"
+    ],
+    "resources": {
+      "media": [
+        {
+          "type": "font",
+          "name": "LATO_REGULAR_18",
+          "file": "fonts/Lato-Regular.ttf"
+        },
+        {
+          "type": "font",
+          "name": "LATO_BOLD_18",
+          "file": "fonts/Lato-Bold.ttf"
+        },
+        {
+          "type": "font",
+          "name": "ROKKITT_BOLD_64",
+          "file": "fonts/Rokkitt-Bold.ttf"
+        },
+        {
+          "type": "bitmap",
+          "name": "SIGAL_BITMAP",
+          "file": "bitmaps/sigal.png"
+        }
+      ]
+    }
+  }
+}
