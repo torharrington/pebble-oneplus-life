@@ -23,6 +23,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 aplite/appinfo.auto.c.28.o
  .text          0x0000000000000000        0x0 aplite/src/resource_ids.auto.c.28.o
  .bss           0x0000000000000000        0x0 aplite/src/resource_ids.auto.c.28.o
+ .data.RESOURCE_ID_IMAGE_MENU_ICON
+                0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.28.o
  .data.RESOURCE_ID_ROKKITT_BOLD_64
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.28.o
  .data.RESOURCE_ID_LATO_BLACK_24
@@ -1407,11 +1409,11 @@ OUTPUT(/Users/obakesan/CloudStation/Projects/OnePlus Life/build/aplite/pebble-ap
  .comment       0x0000000000000000       0x4f src/message_keys.auto.c.28.o
  .comment       0x0000000000000000       0x4f /usr/local/Cellar/pebble-toolchain/2.0/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x1532
+.debug_info     0x0000000000000000     0x1544
  .debug_info    0x0000000000000000     0x110b src/main.c.28.o
  .debug_info    0x000000000000110b      0x313 aplite/appinfo.auto.c.28.o
- .debug_info    0x000000000000141e       0x93 aplite/src/resource_ids.auto.c.28.o
- .debug_info    0x00000000000014b1       0x81 src/message_keys.auto.c.28.o
+ .debug_info    0x000000000000141e       0xa5 aplite/src/resource_ids.auto.c.28.o
+ .debug_info    0x00000000000014c3       0x81 src/message_keys.auto.c.28.o
 
 .debug_abbrev   0x0000000000000000      0x45a
  .debug_abbrev  0x0000000000000000      0x334 src/main.c.28.o
@@ -1441,14 +1443,14 @@ OUTPUT(/Users/obakesan/CloudStation/Projects/OnePlus Life/build/aplite/pebble-ap
  .debug_line    0x0000000000000492       0xc4 aplite/src/resource_ids.auto.c.28.o
  .debug_line    0x0000000000000556       0xbd src/message_keys.auto.c.28.o
 
-.debug_str      0x0000000000000000      0x95d
+.debug_str      0x0000000000000000      0x979
  .debug_str     0x0000000000000000      0x6cc src/main.c.28.o
                                         0x767 (size before relaxing)
  .debug_str     0x00000000000006cc      0x212 aplite/appinfo.auto.c.28.o
                                         0x30a (size before relaxing)
- .debug_str     0x00000000000008de       0x55 aplite/src/resource_ids.auto.c.28.o
-                                        0x127 (size before relaxing)
- .debug_str     0x0000000000000933       0x2a src/message_keys.auto.c.28.o
+ .debug_str     0x00000000000008de       0x71 aplite/src/resource_ids.auto.c.28.o
+                                        0x143 (size before relaxing)
+ .debug_str     0x000000000000094f       0x2a src/message_keys.auto.c.28.o
                                          0xfc (size before relaxing)
 
 .debug_frame    0x0000000000000000       0xfc
