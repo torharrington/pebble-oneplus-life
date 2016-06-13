@@ -1,9 +1,11 @@
 {
     "targetPlatforms": [
-        "basalt"
+        "aplite", 
+        "basalt", 
+        "chalk"
     ], 
-    "displayName": "oneplus", 
-    "name": "oneplus", 
+    "displayName": "OnePlus Life", 
+    "name": "OnePlus Life", 
     "messageKeys": {
         "dummy": 10000
     }, 
@@ -15,8 +17,8 @@
     "appKeys": {
         "dummy": 10000
     }, 
-    "longName": "oneplus", 
-    "shortName": "oneplus", 
+    "longName": "OnePlus Life", 
+    "shortName": "OnePlus Life", 
     "watchapp": {
         "watchface": true
     }, 

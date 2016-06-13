@@ -1,17 +1,19 @@
 {
-  "name": "oneplus",
+  "name": "OnePlus Life",
   "author": "Tor Harrington",
   "version": "1.0.0",
   "keywords": ["pebble-app"],
   "private": true,
   "dependencies": {},
   "pebble": {
-    "displayName": "oneplus",
+    "displayName": "OnePlus Life",
     "uuid": "e71435f5-87fe-4e67-9ec3-d78b5cf8349c",
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-      "basalt"
+      "aplite",
+      "basalt",
+      "chalk"
     ],
     "watchapp": {
       "watchface": true
