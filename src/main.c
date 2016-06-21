@@ -219,7 +219,7 @@ static void prv_window_load(Window *window) {
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerHeader);
 
   /* LOGO TEXT */
-  textLayerLogo = text_layer_create(GRect(PBL_IF_ROUND_ELSE(63,45), PBL_IF_ROUND_ELSE(45,38), 55, 73));
+  textLayerLogo = text_layer_create(GRect(PBL_IF_ROUND_ELSE(58,40), PBL_IF_ROUND_ELSE(45,38), 65, 73));
   text_layer_set_font(textLayerLogo, fontRokkitBold);
   text_layer_set_text_color(textLayerLogo, PBL_IF_BW_ELSE(GColorBlack, GColorDarkCandyAppleRed));
   text_layer_set_background_color(textLayerLogo, GColorWhite);
