@@ -1,5 +1,7 @@
 #include <pebble.h>
 
+#define MAX_SAYINGS 20
+
 typedef struct
 {
   char header[10];
@@ -11,7 +13,31 @@ typedef struct
 {
   char header[10];
   char footer[10];
-} OneplusQuote;
+} Saying;
+
+static const Saying sayings[MAX_SAYINGS] =
+{
+    {"NEVER", "SETTLE"},
+    {"#HYPE", "#GTFO"},
+    {"HYPE", "TRAIN"},
+    {"LOOP VR", "ONEPLUS 3"},
+    {"WEEKLY", "UPDATE"},
+    {"GOT", "INVITES?"},
+    {"OXYGEN", "OS"},
+    {"ONEPLUS", "LIFE"},
+    {"ONEPLUS", "ONE"},
+    {"ONEPLUS", "TWO"},
+    {"ONEPLUS", "THREE"},
+    {"ONEPLUS", "X"},
+    {"ADAM", "KRISKO"},
+    {"CARL", "PEI"},
+    {"PETE", "LAU"},
+    {"YOU GOT", "PEID!!!"},
+    {"NO ONE", "NEEDS NFC!"},
+    {"ONEPLUS 2", "= 3"},
+    {"SERVER", "ERROR"},
+    {"OUT OF", "STOCK!!!"}
+};
 
 static const char *MONTHS[12] = {
   "JANUARY",
@@ -39,121 +65,17 @@ static GFont fontLatoBlack;
 static GFont fontRokkitBold;
 
 static FaceText ft;
-static OneplusQuote qt;
 
 static void watch_init_default(int quoteIndex)
 {
-  switch(quoteIndex)
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "quoteIndex:%i", quoteIndex);
+  
+  if (quoteIndex >=0 && quoteIndex <MAX_SAYINGS)
   {
-    case 0:
-      strcpy(qt.header, "NEVER");
-      strcpy(qt.footer, "SETTLE");
-      break;
-
-    case 1:
-      strcpy(qt.header, "#HYPE");
-      strcpy(qt.footer, "#GTFO");
-      break;
-
-    case 2:
-      strcpy(qt.header, "HYPE");
-      strcpy(qt.footer, "TRAIN");
-      break;
-
-    case 3:
-      strcpy(qt.header, "LOOP VR");
-      strcpy(qt.footer, "OnePlus 3");
-      break;
-
-    case 4:
-      strcpy(qt.header, "WEEKLY");
-      strcpy(qt.footer, "UPDATE");
-      break;
-
-    case 5:
-      strcpy(qt.header, "GOT");
-      strcpy(qt.footer, "INVITES?");
-      break;
-
-    case 6:
-      strcpy(qt.header, "OXYGEN");
-      strcpy(qt.footer, "OS");
-      break;
-
-    case 7:
-      strcpy(qt.header, "OnePlus");
-      strcpy(qt.footer, "Life!");
-      break;
-
-    case 8:
-      strcpy(qt.header, "OnePlus");
-      strcpy(qt.footer, "One");
-      break;
-
-    case 9:
-      strcpy(qt.header, "OnePlus");
-      strcpy(qt.footer, "Two");
-      break;
-
-    case 10:
-      strcpy(qt.header, "OnePlus");
-      strcpy(qt.footer, "Three");
-      break;
-
-    case 11:
-      strcpy(qt.header, "OnePlus");
-      strcpy(qt.footer, "X");
-      break;
-
-    case 12:
-      strcpy(qt.header, "Adam");
-      strcpy(qt.footer, "Krisko");
-      break;
-
-    case 13:
-      strcpy(qt.header, "Carl");
-      strcpy(qt.footer, "Pei");
-      break;
-
-    case 14:
-      strcpy(qt.header, "Pete");
-      strcpy(qt.footer, "Lau");
-      break;
-
-    case 15:
-      strcpy(qt.header, "You Got");
-      strcpy(qt.footer, "PEID!!!");
-      break;
-
-    case 16:
-      strcpy(qt.header, "No One");
-      strcpy(qt.footer, "Needs NFC!");
-      break;
-
-    case 17:
-      strcpy(qt.header, "OnePlus 2");
-      strcpy(qt.footer, "= Three");
-      break;
-
-    case 18:
-      strcpy(qt.header, "SERVER");
-      strcpy(qt.footer, "ERROR");
-      break;
-
-    case 19:
-      strcpy(qt.header, "OUT OF");
-      strcpy(qt.footer, "STOCK!!!");
-      break;
-
-    default:
-      strcpy(qt.header, "NEVER");
-      strcpy(qt.footer, "SETTLE");
-      break;
+    strcpy(ft.header, sayings[quoteIndex].header);
+    strcpy(ft.body, "1");
+    strcpy(ft.footer, sayings[quoteIndex].footer);
   }
-
-  strcpy(ft.header, qt.header);
-  strcpy(ft.body, "1");
-  strcpy(ft.footer, qt.footer);
 }
 
 static void watch_set_text()
