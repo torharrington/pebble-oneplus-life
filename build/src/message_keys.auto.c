@@ -6,4 +6,5 @@
 // DO NOT MODIFY - CHANGES WILL BE OVERWRITTEN
 //
 
-uint32_t MESSAGE_KEY_dummy = 10000;
+uint32_t MESSAGE_KEY_ColourTheme = 10000;
+uint32_t MESSAGE_KEY_EnableSayings = 10001;

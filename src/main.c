@@ -66,10 +66,15 @@ static GFont fontRokkitBold;
 
 static FaceText ft;
 
+static void prv_inbox_received_handler(DictionaryIterator *iter, void *context)
+{
+  
+}
+
 static void watch_init_default(int quoteIndex)
 {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "quoteIndex:%i", quoteIndex);
-  
+
   if (quoteIndex >=0 && quoteIndex <MAX_SAYINGS)
   {
     strcpy(ft.header, sayings[quoteIndex].header);
@@ -188,7 +193,11 @@ static void prv_init(void) {
     .unload = prv_window_unload,
   });
   const bool animated = true;
+
   window_stack_push(s_window, animated);
+
+  app_message_register_inbox_received(prv_inbox_received_handler);
+  app_message_open(128, 128);
 }
 
 static void prv_deinit(void) {
