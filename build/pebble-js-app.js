@@ -404,31 +404,69 @@ module.exports =
 [
   {
     "type": "heading",
-    "defaultValue": "OnePlus Life"
+    "defaultValue": "OnePlus Life",
+    "size": 1
   },
   {
-    "type": "toggle",
-    "messageKey": "enableSayings",
-    "label": "Enable Sayings",
-    "defaultValue": true
-  },
-  {
-    "type": "radiogroup",
-    "messageKey": "ColourTheme",
-    "label": "Theme",
-    "options": [
+    "type": "section",
+    "items": [
       {
-        "label": '<img width="64" height="75" title="" alt="" src="data:image/png;base64,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" />',
-        "value": "0"
+        "type": "toggle",
+        "messageKey": "ENABLE_SAYINGS",
+        "label": "Enable Sayings",
+        "defaultValue": false,
+        "description": "When this is enabled, the NEVER SETTLE text will change to a random saying; for the true community fandom experience!"
       },
       {
-        "label": '<img width="64" height="75" title="" alt="" src="data:image/png;base64,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" />',
-        "value": "1"
+        "type": "radiogroup",
+        "messageKey": "COLOUR_THEME",
+        "label": "Theme",
+        "defaultValue": "0",
+        "capabilities": [
+          "COLOR"
+        ],
+        "options": [
+          {
+            "label": '<b style="color: #AA0000; background-color: #FFF; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "0"
+          },
+          {
+            "label": '<b style="color: #FFF; background-color: #AA0000; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "1"
+          },
+          {
+            "label": '<b style="color: #AA0000; background-color: #000; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "2"
+          },
+          {
+            "label": '<b style="color: #FFF; background-color: #000; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "3"
+          },
+          {
+            "label": '<b style="color: #000; background-color: #FFF; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "4"
+          }
+        ]
       },
       {
-        "label": '<img width="64" height="75" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABLCAYAAADAroEdAAAAAXNSR0IArs4c6QAABS9JREFUeAHtm2uIVkUYx9fM2rIsVMIC40U3szIzLxFrUdhWhhJYfcwuVuInxQupIH7RoA/Rh4UoRIQkiMAgigq6eCkxRZPSErMQMxRDXW3DUpPy9993HhgOW7gz43nf0zkP/HaemTlze+aZ2XPOe6ZfS0vLP1BauaS0I3cDrwxQeUDJLXBp6PgHUfBFWO+wepag/Axvw3wYAr58TOQR+Aw2gsljKONhLTxliS7sJnwD1J7kHByDL2AXxEjwHjCAVkfBbLjF60Eb+g0uPoJQ8UMeP6IPhyfApBVlBlwFx0H1ynBW7gi6tXct+lG4A5bBrRAjwR5gjcqCC2AxdFmiF/6F/roXl/olPAQ3ww9wF1wOn4OJvMgvZ550kPTXQGUWwRjYA6ES7AHW4E4UzdxC6M2aSpvl0MxK5P6Se+tBTyi33uTiCuQlVk7LzeQylGFwp0vYbxmBYW997lNV+7j6W3gW1OHsXZUsXAOJrdcD6D9BO7wHt8NXoLVuM30Feg0kcn+TsSidLqJ9ZodlBIbRBlC72thGQgdkDXCWtOWQFXnBHJDRZKRPwRcZ9mUvwQyzm7QNMBdGe/mhqtpOIquo5QD0y9TWn/gUjytd/hbCP2EiHIbsOh5KmpWbjG5yBmUzfA1aBndDjCQzgGb6FTiZ6Y1cTDNt2Ho+TZo2Q4ntCfVY/e+NBFZmpp/h9LWEausZaIVQ0YRlvTa0rkKWS+YBhRw9nU6yCeY9+BdocIJr9ATh0ogOFNIAVzPgwRGD9ouWfglUBvDdoYx61B6gJ7qBia22nfr8m6JJxLNPfDWvTd1YPe3Fpepp8aNM2r9FowzQQa2pNiProB6HfQNo8NMss5dQN0HZfD1yX6gBqj2gF6OWKinqVlivqWwJbEV/NSfTLaAdewjqQtczQ6hUSyDUcv+XcqX3gKh/gyFe8DiFHsgU3Eu8M5P2X9GNZOqNkUTvFWIkdwPoBare9viiV919kZ1cLFJI7gbQi8x3Xc9XEzZ6DeZuAL06E80iuRsgxcDvo5Kaq+gU4TqnhwSFNIDeBvk3QjEGaPQSDJm0pGUqAyQ1ZwErqzyggJOWtMuVByQ1ZwErqzyggJOWtMu53wneT/efd0Mw97uN+Fsu7UkX5hXkbgANWt/5+KIXk9k0P/9i6rkbYD2jEc0i5oXN0p/c+1EZIHeTN1mDpfeAZJvgGGb2pZxm9/qE7SQzgN723pSwY3lVVS2BGEvvp7B+z2+k/BbZeNSvw5FtN0Xx0i+BygBN4YcN7ETlAQ00flM0XXoPCL4T1Pd5+lBSt8DnYBt8CPNgCPii02DZjyKU/wtcA4MUycibxKfDQFjp5Y1DV7u+fENknZ/QBz3YA3SK41H4FfSVxoOgykZAGxzy+AP9GOi6UaBBK66bmC6nX0eovG4X13E71ZW9vZaxdF1/sDZ0ciRUgj1AhyXVWZ3h0+/9GvzfIFHn/TN/SpOHjISxsBtWgS9LiIwHpV/IgHTK7H2IlWAD7KPlKSADqDMfwFGQqNJZPVr9gJOuTS0TqVCf2uj7gHciKg82wBoalRvfA1OhHeaCRN5Qk4LsqgfJ/w52NXZH1hxsgLM0rI1HPAcPg057SpS3vEe7eH8+oeqGLQHN8AqQy38Ho0GDPgwSbVBaHiZbUbQRhohmaJor+LtXQRu6tXEEfY+X1xc1yANkgO+hA9pBO3knWAdV6RwwUedCDTCAsnYe4CC6zbo+kRGSzRBqgKjHYRVuBZ0ALapEGaCog/b7LW8utVQGKPX0M/jSe8B5OYLN0sErjysAAAAASUVORK5CYII=" />',
-        "value": "2"
-      },
+        "type": "radiogroup",
+        "messageKey": "COLOUR_THEME",
+        "label": "Theme",
+        "defaultValue": "4",
+        "capabilities": [
+          "BW"
+        ],
+        "options": [
+          {
+            "label": '<b style="color: #FFF; background-color: #000; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "3"
+          },
+          {
+            "label": '<b style="color: #000; background-color: #FFF; display: block; width: 240px; height: 64px; font-weight: bold; line-height: 2em; font-size: 2em;text-align: center;">NEVER SETTLE</b>',
+            "value": "4"
+          }
+        ]
+      }
     ]
   },
   {
@@ -437,13 +475,13 @@ module.exports =
   }
 ]
 });
-__loader.define('build/js/message_keys.json', 440, function(exports, module, require) {
+__loader.define('build/js/message_keys.json', 478, function(exports, module, require) {
 module.exports = {
     "ColourTheme": 10000,
     "EnableSayings": 10001
 };
 });
-__loader.define('node_modules/pebble-clay/index.js', 446, function(exports, module, require) {
+__loader.define('node_modules/pebble-clay/index.js', 484, function(exports, module, require) {
 /* Clay - https://github.com/pebble/clay - Version: 1.0.1 - Build Date: 2016-06-18T00:18:44.826Z */
 !function(t){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var e;e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,e.pebbleClay=t()}}(function(){var t;return function e(t,n,r){function o(a,s){if(!n[a]){if(!t[a]){var c="function"==typeof require&&require;if(!s&&c)return c(a,!0);if(i)return i(a,!0);var l=new Error("Cannot find module '"+a+"'");throw l.code="MODULE_NOT_FOUND",l}var u=n[a]={exports:{}};t[a][0].call(u.exports,function(e){var n=t[a][1][e];return o(n?n:e)},u,u.exports,e,t,n,r)}return n[a].exports}for(var i="function"==typeof require&&require,a=0;a<r.length;a++)o(r[a]);return o}({1:[function(t,e,n){"use strict";function r(){for(var t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",e=0,n=t.length;n>e;++e)c[e]=t[e],l[t.charCodeAt(e)]=e;l["-".charCodeAt(0)]=62,l["_".charCodeAt(0)]=63}function o(t){var e,n,r,o,i,a,s=t.length;if(s%4>0)throw new Error("Invalid string. Length must be a multiple of 4");i="="===t[s-2]?2:"="===t[s-1]?1:0,a=new u(3*s/4-i),r=i>0?s-4:s;var c=0;for(e=0,n=0;r>e;e+=4,n+=3)o=l[t.charCodeAt(e)]<<18|l[t.charCodeAt(e+1)]<<12|l[t.charCodeAt(e+2)]<<6|l[t.charCodeAt(e+3)],a[c++]=o>>16&255,a[c++]=o>>8&255,a[c++]=255&o;return 2===i?(o=l[t.charCodeAt(e)]<<2|l[t.charCodeAt(e+1)]>>4,a[c++]=255&o):1===i&&(o=l[t.charCodeAt(e)]<<10|l[t.charCodeAt(e+1)]<<4|l[t.charCodeAt(e+2)]>>2,a[c++]=o>>8&255,a[c++]=255&o),a}function i(t){return c[t>>18&63]+c[t>>12&63]+c[t>>6&63]+c[63&t]}function a(t,e,n){for(var r,o=[],a=e;n>a;a+=3)r=(t[a]<<16)+(t[a+1]<<8)+t[a+2],o.push(i(r));return o.join("")}function s(t){for(var e,n=t.length,r=n%3,o="",i=[],s=16383,l=0,u=n-r;u>l;l+=s)i.push(a(t,l,l+s>u?u:l+s));return 1===r?(e=t[n-1],o+=c[e>>2],o+=c[e<<4&63],o+="=="):2===r&&(e=(t[n-2]<<8)+t[n-1],o+=c[e>>10],o+=c[e>>4&63],o+=c[e<<2&63],o+="="),i.push(o),i.join("")}n.toByteArray=o,n.fromByteArray=s;var c=[],l=[],u="undefined"!=typeof Uint8Array?Uint8Array:Array;r()},{}],2:[function(t,e,n){(function(e){/*!
  * The buffer module from node.js, for the browser.
