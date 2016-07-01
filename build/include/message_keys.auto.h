@@ -6,5 +6,5 @@
 // DO NOT MODIFY - CHANGES WILL BE OVERWRITTEN
 //
 
-extern uint32_t MESSAGE_KEY_ColourTheme;
-extern uint32_t MESSAGE_KEY_EnableSayings;
+extern uint32_t MESSAGE_KEY_IS_SAYINGS;
+extern uint32_t MESSAGE_KEY_THEME;

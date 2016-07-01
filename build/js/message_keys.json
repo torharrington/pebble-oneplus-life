@@ -1,4 +1,4 @@
 {
-    "ColourTheme": 10000,
-    "EnableSayings": 10001
+    "IS_SAYINGS": 10001,
+    "THEME": 10000
 }

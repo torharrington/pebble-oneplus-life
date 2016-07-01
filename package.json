@@ -6,10 +6,6 @@
     "pebble-app"
   ],
   "private": true,
-  "capabilities":
-    [
-      "configurable"
-    ],
   "dependencies": {
     "pebble-clay": "^1.0.1"
   },
@@ -23,12 +19,15 @@
       "basalt",
       "chalk"
     ],
+    "capabilities": [
+        "configurable"
+      ],
     "watchapp": {
       "watchface": true
     },
     "messageKeys": [
-      "ColourTheme",
-      "EnableSayings"
+      "THEME",
+      "IS_SAYINGS"
     ],
     "resources": {
       "media": [
