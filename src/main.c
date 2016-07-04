@@ -107,6 +107,31 @@ static void watch_refresh_theme()
   layer_mark_dirty(layerLogo);
 }
 
+static void inbox_received_handler(DictionaryIterator *iter, void *context)
+{
+  Tuple *theme = dict_find(iter, MESSAGE_KEY_THEME);
+  Tuple *isSayings = dict_find(iter, MESSAGE_KEY_IS_SAYINGS);
+
+  if (theme)
+  {
+    WatchTheme _theme = (WatchTheme) (theme->value->int32 - 48);
+    persist_write_int(MESSAGE_KEY_THEME, _theme);
+    init_setting_theme(&settings, &_theme);
+    watch_refresh_theme();
+  }
+
+  if (isSayings)
+  {
+    bool _isSayings = (bool) isSayings->value->int32;
+    settings.isSayings = _isSayings;
+
+    persist_write_bool(MESSAGE_KEY_IS_SAYINGS, _isSayings);
+
+    watch_set_saying(0);
+    watch_set_text();
+  }
+}
+
 static void prv_window_load(Window *window) {
   GRect bounds = layer_get_bounds(window_get_root_layer(window));
   window_set_background_color(window, settings.theme.bgColour);
@@ -148,40 +173,17 @@ static void prv_window_load(Window *window) {
   accel_tap_service_subscribe(accel_tap_handler);
 }
 
-static void inbox_received_handler(DictionaryIterator *iter, void *context)
-{
-  Tuple *theme = dict_find(iter, MESSAGE_KEY_THEME);
-  Tuple *isSayings = dict_find(iter, MESSAGE_KEY_IS_SAYINGS);
-
-  if (theme)
-  {
-    WatchTheme _theme = (WatchTheme) (theme->value->int32 - 48);
-    persist_write_int(MESSAGE_KEY_THEME, _theme);
-    init_setting_theme(&settings, &_theme);
-    watch_refresh_theme();
-  }
-
-  if (isSayings)
-  {
-    bool _isSayings = (bool) isSayings->value->int32;
-    settings.isSayings = _isSayings;
-
-    persist_write_bool(MESSAGE_KEY_IS_SAYINGS, _isSayings);
-
-    watch_set_saying(0);
-    watch_set_text();
-  }
-}
-
 static void prv_window_unload(Window *window) {
-  text_layer_destroy(textLayerHeader);
-  text_layer_destroy(textLayerLogo);
-
-  layer_destroy(layerLogo);
+  accel_tap_service_unsubscribe();
 
   text_layer_destroy(textLayerFooter);
+  layer_destroy(layerLogo);
 
-  accel_tap_service_unsubscribe();
+  text_layer_destroy(textLayerLogo);
+  text_layer_destroy(textLayerHeader);
+
+  fonts_unload_custom_font(fontRokkitBold);
+  fonts_unload_custom_font(fontLatoBlack);
 }
 
 static void prv_init(void) {

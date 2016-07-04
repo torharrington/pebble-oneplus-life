@@ -451,7 +451,7 @@ module.exports =
       {
         "type": "radiogroup",
         "messageKey": "THEME",
-        "label": "Theme",
+        "label": "Theme preset",
         "defaultValue": "4",
         "capabilities": [
           "BW"

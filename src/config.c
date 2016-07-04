@@ -12,7 +12,7 @@ void init_setting_theme(WatchSettings *settings, WatchTheme *theme)
 
     case 1:
       settings->theme.fgColour = GColorWhite;
-      settings->theme.bgColour= GColorDarkCandyAppleRed;
+      settings->theme.bgColour = GColorDarkCandyAppleRed;
       break;
 
     case 2:
