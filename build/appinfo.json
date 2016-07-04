@@ -5,17 +5,21 @@
         "chalk"
     ], 
     "displayName": "OnePlus Life", 
-    "name": "OnePlus Life", 
+    "name": "OnePlusLife", 
     "messageKeys": {
-        "dummy": 10000
+        "IS_SAYINGS": 10001, 
+        "THEME": 10000
     }, 
     "companyName": "Tor Harrington", 
     "enableMultiJS": true, 
     "versionLabel": "1.1", 
-    "capabilities": [], 
+    "capabilities": [
+        "configurable"
+    ], 
     "sdkVersion": "3", 
     "appKeys": {
-        "dummy": 10000
+        "IS_SAYINGS": 10001, 
+        "THEME": 10000
     }, 
     "longName": "OnePlus Life", 
     "shortName": "OnePlus Life", 

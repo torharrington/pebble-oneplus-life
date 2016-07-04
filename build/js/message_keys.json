@@ -1,3 +1,4 @@
 {
-    "dummy": 10000
+    "IS_SAYINGS": 10001,
+    "THEME": 10000
 }

@@ -1,10 +1,14 @@
 {
-  "name": "OnePlus Life",
+  "name": "OnePlusLife",
   "author": "Tor Harrington",
   "version": "1.1.0",
-  "keywords": ["pebble-app"],
+  "keywords": [
+    "pebble-app"
+  ],
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "pebble-clay": "^1.0.1"
+  },
   "pebble": {
     "displayName": "OnePlus Life",
     "uuid": "e71435f5-87fe-4e67-9ec3-d78b5cf8349c",
@@ -15,11 +19,15 @@
       "basalt",
       "chalk"
     ],
+    "capabilities": [
+        "configurable"
+      ],
     "watchapp": {
       "watchface": true
     },
     "messageKeys": [
-      "dummy"
+      "THEME",
+      "IS_SAYINGS"
     ],
     "resources": {
       "media": [

@@ -1,43 +1,6 @@
 #include <pebble.h>
-
-#define MAX_SAYINGS 20
-
-typedef struct
-{
-  char header[10];
-  char body[4];
-  char footer[10];
-} FaceText;
-
-typedef struct
-{
-  char header[10];
-  char footer[10];
-} Saying;
-
-static const Saying sayings[MAX_SAYINGS] =
-{
-    {"NEVER", "SETTLE"},
-    {"#HYPE", "#GTFO"},
-    {"HYPE", "TRAIN"},
-    {"LOOP VR", "ONEPLUS 3"},
-    {"WEEKLY", "UPDATE"},
-    {"GOT", "INVITES?"},
-    {"OXYGEN", "OS"},
-    {"ONEPLUS", "LIFE"},
-    {"ONEPLUS", "ONE"},
-    {"ONEPLUS", "TWO"},
-    {"ONEPLUS", "THREE"},
-    {"ONEPLUS", "X"},
-    {"ADAM", "KRISKO"},
-    {"CARL", "PEI"},
-    {"PETE", "LAU"},
-    {"YOU GOT", "PEID!!!"},
-    {"NO ONE", "NEEDS NFC!"},
-    {"ONEPLUS 2", "= 3"},
-    {"SERVER", "ERROR"},
-    {"OUT OF", "STOCK!!!"}
-};
+#include "config.h"
+#include "sayings.h"
 
 static const char *MONTHS[12] = {
   "JANUARY",
@@ -65,24 +28,23 @@ static GFont fontLatoBlack;
 static GFont fontRokkitBold;
 
 static FaceText ft;
-
-static void watch_init_default(int quoteIndex)
-{
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "quoteIndex:%i", quoteIndex);
-  
-  if (quoteIndex >=0 && quoteIndex <MAX_SAYINGS)
-  {
-    strcpy(ft.header, sayings[quoteIndex].header);
-    strcpy(ft.body, "1");
-    strcpy(ft.footer, sayings[quoteIndex].footer);
-  }
-}
+static WatchSettings settings;
 
 static void watch_set_text()
 {
   text_layer_set_text(textLayerHeader, ft.header);
   text_layer_set_text(textLayerLogo, ft.body);
   text_layer_set_text(textLayerFooter, ft.footer);
+}
+
+static void watch_set_saying(int index)
+{
+  if (index >= 0 && index < MAX_SAYINGS)
+  {
+    strcpy(ft.header, sayings[index].header);
+    strcpy(ft.body, "1");
+    strcpy(ft.footer, sayings[index].footer);
+  }
 }
 
 static void watch_set_time()
@@ -93,25 +55,30 @@ static void watch_set_time()
   strcpy(ft.header, MONTHS[theTime->tm_mon]);
   snprintf(ft.body, sizeof(ft.body), "%i", theTime->tm_mday);
   strftime(ft.footer, sizeof(ft.footer), clock_is_24h_style() ? "%H:%M" : "%I:%M %p", theTime);
-
-  watch_set_text();
 }
 
 static void app_timer_callback(void *data)
 {
-  watch_init_default(rand() % 20);
+  int index = rand() % MAX_SAYINGS;
+
+  watch_set_saying(settings.isSayings ? index : 0);
   watch_set_text();
 }
 
 static void accel_tap_handler(AccelAxisType axis, int32_t direction)
 {
-  watch_set_time();
-  app_timer_register(5000, app_timer_callback, NULL);
+  if (axis == ACCEL_AXIS_Y)
+  {
+    watch_set_time();
+    watch_set_text();
+
+    app_timer_register(5000, app_timer_callback, NULL);
+  }
 }
 
 static void logo_layer_update_proc(Layer *layer, GContext *ctx)
 {
-  graphics_context_set_fill_color(ctx, PBL_IF_BW_ELSE(GColorBlack, GColorDarkCandyAppleRed));
+  graphics_context_set_fill_color(ctx, settings.theme.fgColour);
 
   /* Square */
   graphics_fill_rect(ctx, GRect(0, 11, 48, 8), 0, GCornerNone);
@@ -124,9 +91,50 @@ static void logo_layer_update_proc(Layer *layer, GContext *ctx)
   graphics_fill_rect(ctx, GRect(68, 0, 8, 30), 0, GCornerNone);
 }
 
+static void watch_refresh_theme()
+{
+  window_set_background_color(s_window, settings.theme.bgColour);
+
+  text_layer_set_text_color(textLayerHeader, settings.theme.fgColour);
+  text_layer_set_background_color(textLayerHeader, settings.theme.bgColour);
+
+  text_layer_set_text_color(textLayerLogo, settings.theme.fgColour);
+  text_layer_set_background_color(textLayerLogo, settings.theme.bgColour);
+
+  text_layer_set_text_color(textLayerFooter, settings.theme.fgColour);
+  text_layer_set_background_color(textLayerFooter, settings.theme.bgColour);
+
+  layer_mark_dirty(layerLogo);
+}
+
+static void inbox_received_handler(DictionaryIterator *iter, void *context)
+{
+  Tuple *theme = dict_find(iter, MESSAGE_KEY_THEME);
+  Tuple *isSayings = dict_find(iter, MESSAGE_KEY_IS_SAYINGS);
+
+  if (theme)
+  {
+    WatchTheme _theme = (WatchTheme) (theme->value->int32 - 48);
+    persist_write_int(MESSAGE_KEY_THEME, _theme);
+    init_setting_theme(&settings, &_theme);
+    watch_refresh_theme();
+  }
+
+  if (isSayings)
+  {
+    bool _isSayings = (bool) isSayings->value->int32;
+    settings.isSayings = _isSayings;
+
+    persist_write_bool(MESSAGE_KEY_IS_SAYINGS, _isSayings);
+
+    watch_set_saying(0);
+    watch_set_text();
+  }
+}
+
 static void prv_window_load(Window *window) {
   GRect bounds = layer_get_bounds(window_get_root_layer(window));
-  window_set_background_color(window, GColorWhite);
+  window_set_background_color(window, settings.theme.bgColour);
 
   fontLatoBlack = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_LATO_BLACK_24));
   fontRokkitBold = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_ROKKITT_BOLD_64));
@@ -134,8 +142,6 @@ static void prv_window_load(Window *window) {
   /* HEADER */
   textLayerHeader = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(12,4), bounds.size.w, 29));
   text_layer_set_font(textLayerHeader, fontLatoBlack);
-  text_layer_set_text_color(textLayerHeader, PBL_IF_BW_ELSE(GColorBlack, GColorDarkCandyAppleRed));
-  text_layer_set_background_color(textLayerHeader, GColorWhite);
   text_layer_set_text_alignment(textLayerHeader, GTextAlignmentCenter);
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerHeader);
@@ -143,8 +149,6 @@ static void prv_window_load(Window *window) {
   /* LOGO TEXT */
   textLayerLogo = text_layer_create(GRect(PBL_IF_ROUND_ELSE(58,40), PBL_IF_ROUND_ELSE(45,38), 65, 73));
   text_layer_set_font(textLayerLogo, fontRokkitBold);
-  text_layer_set_text_color(textLayerLogo, PBL_IF_BW_ELSE(GColorBlack, GColorDarkCandyAppleRed));
-  text_layer_set_background_color(textLayerLogo, GColorWhite);
   text_layer_set_text_alignment(textLayerLogo, GTextAlignmentCenter);
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerLogo);
@@ -158,40 +162,50 @@ static void prv_window_load(Window *window) {
   /* FOOTER */
   textLayerFooter = text_layer_create(GRect(0, 130, bounds.size.w, 29));
   text_layer_set_font(textLayerFooter, fontLatoBlack);
-  text_layer_set_text_color(textLayerFooter, PBL_IF_BW_ELSE(GColorBlack, GColorDarkCandyAppleRed));
-  text_layer_set_background_color(textLayerFooter, GColorWhite);
   text_layer_set_text_alignment(textLayerFooter, GTextAlignmentCenter);
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerFooter);
 
-  watch_init_default(0);
+  watch_refresh_theme();
+  watch_set_saying(0);
   watch_set_text();
 
   accel_tap_service_subscribe(accel_tap_handler);
 }
 
 static void prv_window_unload(Window *window) {
-  text_layer_destroy(textLayerHeader);
-  text_layer_destroy(textLayerLogo);
-
-  layer_destroy(layerLogo);
+  accel_tap_service_unsubscribe();
 
   text_layer_destroy(textLayerFooter);
+  layer_destroy(layerLogo);
 
-  accel_tap_service_unsubscribe();
+  text_layer_destroy(textLayerLogo);
+  text_layer_destroy(textLayerHeader);
+
+  fonts_unload_custom_font(fontRokkitBold);
+  fonts_unload_custom_font(fontLatoBlack);
 }
 
 static void prv_init(void) {
   s_window = window_create();
+
+  init_settings(&settings);
+
   window_set_window_handlers(s_window, (WindowHandlers) {
     .load = prv_window_load,
     .unload = prv_window_unload,
   });
+
   const bool animated = true;
+
   window_stack_push(s_window, animated);
+
+  app_message_register_inbox_received(inbox_received_handler);
+  app_message_open(128, 128);
 }
 
 static void prv_deinit(void) {
+  app_message_deregister_callbacks();
   window_destroy(s_window);
 }
 
