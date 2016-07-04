@@ -1151,7 +1151,7 @@ LOAD aplite/appinfo.auto.c.28.o
 LOAD aplite/src/resource_ids.auto.c.28.o
 LOAD src/message_keys.auto.c.28.o
 LOAD /Users/obakesan/Library/Application Support/Pebble SDK/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a
-LOAD /Users/obakesan/CloudStation/Projects/opl/node_modules/pebble-clay/dist/binaries/aplite/libpebble-clay.a
+LOAD /Users/obakesan/CloudStation/Projects/OnePlus Life/node_modules/pebble-clay/dist/binaries/aplite/libpebble-clay.a
 START GROUP
 LOAD /usr/local/Cellar/pebble-toolchain/2.0/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/libgcc.a
 LOAD /usr/local/Cellar/pebble-toolchain/2.0/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/lib/thumb2/libc.a
@@ -1417,7 +1417,7 @@ DISCARD
  libm.a(*)
  libgcc.a(*)
  *(.eh_frame)
-OUTPUT(/Users/obakesan/CloudStation/Projects/opl/build/aplite/pebble-app.elf elf32-littlearm)
+OUTPUT(/Users/obakesan/CloudStation/Projects/OnePlus Life/build/aplite/pebble-app.elf elf32-littlearm)
 
 .ARM.attributes
                 0x0000000000000000       0x27
@@ -1486,24 +1486,24 @@ OUTPUT(/Users/obakesan/CloudStation/Projects/opl/build/aplite/pebble-app.elf elf
  .debug_ranges  0x0000000000000000       0x18 src/config.c.28.o
  .debug_ranges  0x0000000000000018       0x58 src/main.c.28.o
 
-.debug_line     0x0000000000000000      0x864
- .debug_line    0x0000000000000000      0x1b3 src/config.c.28.o
- .debug_line    0x00000000000001b3      0x3f9 src/main.c.28.o
- .debug_line    0x00000000000005ac      0x137 aplite/appinfo.auto.c.28.o
- .debug_line    0x00000000000006e3       0xc4 aplite/src/resource_ids.auto.c.28.o
- .debug_line    0x00000000000007a7       0xbd src/message_keys.auto.c.28.o
+.debug_line     0x0000000000000000      0x876
+ .debug_line    0x0000000000000000      0x1bc src/config.c.28.o
+ .debug_line    0x00000000000001bc      0x402 src/main.c.28.o
+ .debug_line    0x00000000000005be      0x137 aplite/appinfo.auto.c.28.o
+ .debug_line    0x00000000000006f5       0xc4 aplite/src/resource_ids.auto.c.28.o
+ .debug_line    0x00000000000007b9       0xbd src/message_keys.auto.c.28.o
 
-.debug_str      0x0000000000000000      0xd42
- .debug_str     0x0000000000000000      0x1b4 src/config.c.28.o
-                                        0x20e (size before relaxing)
- .debug_str     0x00000000000001b4      0x8f3 src/main.c.28.o
-                                        0xb3d (size before relaxing)
- .debug_str     0x0000000000000aa7      0x212 aplite/appinfo.auto.c.28.o
-                                        0x301 (size before relaxing)
- .debug_str     0x0000000000000cb9       0x71 aplite/src/resource_ids.auto.c.28.o
-                                        0x13a (size before relaxing)
- .debug_str     0x0000000000000d2a       0x18 src/message_keys.auto.c.28.o
-                                        0x10a (size before relaxing)
+.debug_str      0x0000000000000000      0xd4b
+ .debug_str     0x0000000000000000      0x1bd src/config.c.28.o
+                                        0x217 (size before relaxing)
+ .debug_str     0x00000000000001bd      0x8f3 src/main.c.28.o
+                                        0xb46 (size before relaxing)
+ .debug_str     0x0000000000000ab0      0x212 aplite/appinfo.auto.c.28.o
+                                        0x30a (size before relaxing)
+ .debug_str     0x0000000000000cc2       0x71 aplite/src/resource_ids.auto.c.28.o
+                                        0x143 (size before relaxing)
+ .debug_str     0x0000000000000d33       0x18 src/message_keys.auto.c.28.o
+                                        0x113 (size before relaxing)
 
 .debug_frame    0x0000000000000000      0x178
  .debug_frame   0x0000000000000000       0x40 src/config.c.28.o

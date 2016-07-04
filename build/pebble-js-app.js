@@ -420,7 +420,7 @@ module.exports =
       {
         "type": "radiogroup",
         "messageKey": "THEME",
-        "label": "Theme",
+        "label": "Theme preset",
         "defaultValue": "0",
         "capabilities": [
           "COLOR"
@@ -428,7 +428,7 @@ module.exports =
         "options": [
           {
             "label": '<b style="color: #AA0000; background-color: #FFF; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
-            "value": 0
+            "value": "0"
           },
           {
             "label": '<b style="color: #FFF; background-color: #AA0000; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
