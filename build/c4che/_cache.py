@@ -19,4 +19,4 @@ REQUESTED_PLATFORMS = [u'aplite', u'basalt', u'chalk']
 RESOURCES_JSON = [{u'type': u'font', u'name': u'LATO_BLACK_24', u'file': u'fonts/Lato-Black.ttf'}, {u'type': u'font', u'name': u'ROKKITT_BOLD_64', u'file': u'fonts/Rokkitt-Bold.ttf'}, {u'menuIcon': True, u'type': u'bitmap', u'name': u'IMAGE_MENU_ICON', u'file': u'menu_icon.png'}]
 SUPPORTED_PLATFORMS = ['aplite', 'basalt', 'chalk']
 TARGET_PLATFORMS = ['chalk', 'basalt', 'aplite']
-TIMESTAMP = 1467671706
+TIMESTAMP = 1467748934
