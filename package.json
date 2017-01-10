@@ -34,12 +34,14 @@
         {
           "type": "font",
           "name": "LATO_BLACK_24",
-          "file": "fonts/Lato-Black.ttf"
+          "file": "fonts/Lato-Black.ttf",
+          "characterRegex": "[0-9:A-Za-z ]"
         },
         {
           "type": "font",
           "name": "ROKKITT_BOLD_64",
-          "file": "fonts/Rokkitt-Bold.ttf"
+          "file": "fonts/Rokkitt-Bold.ttf",
+          "characterRegex": "[0-9]"
         },
         {
           "menuIcon": true,
