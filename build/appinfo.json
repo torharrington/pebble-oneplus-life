@@ -1,0 +1,52 @@
+{
+    "targetPlatforms": [
+        "aplite", 
+        "basalt", 
+        "chalk"
+    ], 
+    "displayName": "OnePlus Life", 
+    "name": "OnePlusLife", 
+    "messageKeys": {
+        "IS_SAYINGS": 10001, 
+        "THEME": 10000
+    }, 
+    "companyName": "Tor Harrington", 
+    "enableMultiJS": true, 
+    "versionLabel": "1.4", 
+    "capabilities": [
+        "configurable"
+    ], 
+    "sdkVersion": "3", 
+    "appKeys": {
+        "IS_SAYINGS": 10001, 
+        "THEME": 10000
+    }, 
+    "longName": "OnePlus Life", 
+    "shortName": "OnePlus Life", 
+    "watchapp": {
+        "watchface": true
+    }, 
+    "resources": {
+        "media": [
+            {
+                "type": "font", 
+                "characterRegex": "[0-9:A-Za-z ]", 
+                "name": "LATO_BLACK_24", 
+                "file": "fonts/Lato-Black.ttf"
+            }, 
+            {
+                "type": "font", 
+                "characterRegex": "[0-9]", 
+                "name": "ROKKITT_BOLD_64", 
+                "file": "fonts/Rokkitt-Bold.ttf"
+            }, 
+            {
+                "menuIcon": true, 
+                "type": "bitmap", 
+                "name": "IMAGE_MENU_ICON", 
+                "file": "menu_icon.png"
+            }
+        ]
+    }, 
+    "uuid": "e71435f5-87fe-4e67-9ec3-d78b5cf8349c"
+}
