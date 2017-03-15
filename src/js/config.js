@@ -43,6 +43,10 @@ module.exports =
           {
             "label": '<b style="color: #000; background-color: #FFF; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
             "value": "4"
+          },
+          {
+            "label": '<b style="color: #fff; background-color: #0055FF; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
+            "value": "5"
           }
         ]
       },

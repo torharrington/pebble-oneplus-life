@@ -61,7 +61,12 @@ static void app_timer_callback(void *data)
 {
   int index = rand() % MAX_SAYINGS;
 
-  watch_set_saying(settings.isSayings ? index : 0);
+  if (settings.theme.style == Colette) {
+    watch_set_saying(settings.isSayings ? index : 1);
+  } else {
+    watch_set_saying(settings.isSayings ? index : 0);
+  }
+
   watch_set_text();
 }
 
@@ -127,7 +132,8 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context)
 
     persist_write_bool(MESSAGE_KEY_IS_SAYINGS, _isSayings);
 
-    watch_set_saying(0);
+    watch_set_saying((settings.theme.style == Colette) ? 1 : 0);
+
     watch_set_text();
   }
 }

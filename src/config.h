@@ -4,13 +4,15 @@ typedef enum
   WhiteRed,
   RedBlack,
   WhiteBlack,
-  BlackWhite
+  BlackWhite,
+  Colette
 } WatchTheme;
 
 typedef struct
 {
   GColor fgColour;
   GColor bgColour;
+  WatchTheme style;
 } ThemeColour;
 
 typedef struct

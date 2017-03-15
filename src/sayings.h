@@ -1,4 +1,4 @@
-#define MAX_SAYINGS 22
+#define MAX_SAYINGS 23
 
 typedef struct
 {
@@ -16,6 +16,7 @@ typedef struct
 static const Saying sayings[MAX_SAYINGS] =
 {
     {"NEVER", "SETTLE"},
+    {"ONEPLUS", "COLETTE"},
     {"#HYPE", "#GTFO"},
     {"HYPE", "TRAIN"},
     {"LOOP VR", "ONEPLUS 3"},

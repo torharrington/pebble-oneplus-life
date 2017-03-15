@@ -3,31 +3,38 @@
 
 void init_setting_theme(WatchSettings *settings, WatchTheme *theme)
 {
+  settings->theme.style = (*theme);
+
   switch((*theme))
   {
-    case 0:
+    case RedWhite:
       settings->theme.fgColour = GColorDarkCandyAppleRed;
       settings->theme.bgColour = GColorWhite;
       break;
 
-    case 1:
+    case WhiteRed:
       settings->theme.fgColour = GColorWhite;
       settings->theme.bgColour = GColorDarkCandyAppleRed;
       break;
 
-    case 2:
+    case RedBlack:
       settings->theme.fgColour = GColorDarkCandyAppleRed;
       settings->theme.bgColour = GColorBlack;
       break;
 
-    case 3:
+    case WhiteBlack:
       settings->theme.fgColour = GColorWhite;
       settings->theme.bgColour = GColorBlack;
       break;
 
-    case 4:
+    case BlackWhite:
       settings->theme.fgColour = GColorBlack;
       settings->theme.bgColour = GColorWhite;
+      break;
+
+    case Colette:
+      settings->theme.fgColour = GColorWhite;
+      settings->theme.bgColour = GColorBlueMoon;
       break;
   }
 }
