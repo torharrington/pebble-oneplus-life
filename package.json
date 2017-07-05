@@ -20,8 +20,8 @@
       "chalk"
     ],
     "capabilities": [
-        "configurable"
-      ],
+      "configurable"
+    ],
     "watchapp": {
       "watchface": true
     },
