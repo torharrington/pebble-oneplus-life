@@ -1,4 +1,4 @@
-#define MAX_SAYINGS 23
+#define MAX_SAYINGS 27
 
 typedef struct
 {
@@ -27,6 +27,8 @@ static const Saying sayings[MAX_SAYINGS] =
     {"ONEPLUS", "ONE"},
     {"ONEPLUS", "TWO"},
     {"ONEPLUS", "THREE"},
+    {"ONEPLUS", "3T"},
+    {"ONEPLUS", "FIVE"},
     {"ONEPLUS", "X"},
     {"ADAM", "KRISKO"},
     {"CARL", "PEI"},
@@ -37,5 +39,7 @@ static const Saying sayings[MAX_SAYINGS] =
     {"SERVER", "ERROR"},
     {"OUT OF", "STOCK!!!"},
     {"HYDROGEN", "OS"},
-    {"CYANOGEN", "MOD"}
+    {"CYANOGEN", "MOD"},
+    {"JELLY", "SCROLL"},
+    {"SHOT ON", "ONEPLUS"}
 };
