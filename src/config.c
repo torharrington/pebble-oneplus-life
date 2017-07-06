@@ -36,6 +36,11 @@ void init_setting_theme(WatchSettings *settings, WatchTheme *theme)
       settings->theme.fgColour = GColorWhite;
       settings->theme.bgColour = GColorBlueMoon;
       break;
+
+    case MidnightBlack:
+      settings->theme.fgColour = GColorDarkGray;
+      settings->theme.bgColour = GColorBlack;
+      break;
   }
 }
 
