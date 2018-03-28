@@ -47,6 +47,7 @@ void init_setting_theme(WatchSettings *settings, WatchTheme *theme)
 void init_settings(WatchSettings *settings)
 {
   bool isSayings = false;
+  bool isNotch = false;
   WatchTheme theme = PBL_IF_BW_ELSE(BlackWhite, RedWhite);
 
   if (persist_exists(MESSAGE_KEY_IS_SAYINGS))
@@ -54,7 +55,13 @@ void init_settings(WatchSettings *settings)
     isSayings = persist_read_bool(MESSAGE_KEY_IS_SAYINGS);
   }
 
+  if (persist_exists(MESSAGE_KEY_IS_NOTCH))
+  {
+    isNotch = persist_read_bool(MESSAGE_KEY_IS_NOTCH);
+  }
+
   settings->isSayings = isSayings;
+  settings->isNotch = isNotch;
 
   if (persist_exists(MESSAGE_KEY_THEME))
   {

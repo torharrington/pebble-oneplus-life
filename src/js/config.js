@@ -16,6 +16,13 @@ module.exports =
         "description": "Change the NEVER SETTLE text to a random saying; experience the fandom!"
       },
       {
+        "type": "toggle",
+        "messageKey": "IS_NOTCH",
+        "label": "Enable notch",
+        "defaultValue": false,
+        "description": "Puts a notch on your Pebble screen! Match your OnePlus 6!"
+      },
+      {
         "type": "radiogroup",
         "messageKey": "THEME",
         "label": "Theme preset",

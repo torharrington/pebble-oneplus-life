@@ -23,6 +23,8 @@ static TextLayer *textLayerHeader;
 static TextLayer *textLayerFooter;
 static TextLayer *textLayerLogo;
 static Layer *layerLogo;
+static BitmapLayer *bitmapLayerNotch;
+static GBitmap *bitmapNotch;
 
 static GFont fontLatoBlack;
 static GFont fontRokkitBold;
@@ -116,6 +118,7 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context)
 {
   Tuple *theme = dict_find(iter, MESSAGE_KEY_THEME);
   Tuple *isSayings = dict_find(iter, MESSAGE_KEY_IS_SAYINGS);
+  Tuple *isNotch = dict_find(iter, MESSAGE_KEY_IS_NOTCH);
 
   if (theme)
   {
@@ -135,6 +138,16 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context)
     watch_set_saying((settings.theme.style == Colette) ? 1 : 0);
 
     watch_set_text();
+  }
+
+  if (isNotch)
+  {
+    bool _isNotch = (bool) isNotch->value->int32;
+    settings.isNotch = _isNotch;
+
+    persist_write_bool(MESSAGE_KEY_IS_NOTCH, _isNotch);
+
+    layer_set_hidden(bitmap_layer_get_layer(bitmapLayerNotch), !_isNotch);
   }
 }
 
@@ -172,6 +185,17 @@ static void prv_window_load(Window *window) {
 
   layer_add_child(window_get_root_layer(s_window), (Layer *)textLayerFooter);
 
+  /* NOTCH */
+  #if defined(PBL_RECT)
+    bitmapNotch = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_NOTCH);
+    bitmapLayerNotch = bitmap_layer_create(GRect(42, 0, 60, 13));
+    bitmap_layer_set_bitmap(bitmapLayerNotch, bitmapNotch);
+    bitmap_layer_set_compositing_mode(bitmapLayerNotch, GCompOpSet);
+
+    layer_add_child(window_get_root_layer(s_window), bitmap_layer_get_layer(bitmapLayerNotch));
+    layer_set_hidden(bitmap_layer_get_layer(bitmapLayerNotch), !settings.isNotch);
+  #endif
+
   watch_refresh_theme();
   watch_set_saying(0);
   watch_set_text();
@@ -181,6 +205,11 @@ static void prv_window_load(Window *window) {
 
 static void prv_window_unload(Window *window) {
   accel_tap_service_unsubscribe();
+
+  #if defined(PBL_RECT)
+    bitmap_layer_destroy(bitmapLayerNotch);
+    gbitmap_destroy(bitmapNotch);
+  #endif
 
   text_layer_destroy(textLayerFooter);
   layer_destroy(layerLogo);

@@ -19,6 +19,7 @@ typedef struct
 typedef struct
 {
   bool isSayings;
+  bool isNotch;
   ThemeColour theme;
 } WatchSettings;
 

@@ -1,7 +1,7 @@
 {
   "name": "OnePlusLife",
   "author": "Tor Harrington",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "keywords": [
     "pebble-app"
   ],
@@ -27,7 +27,8 @@
     },
     "messageKeys": [
       "THEME",
-      "IS_SAYINGS"
+      "IS_SAYINGS",
+      "IS_NOTCH"
     ],
     "resources": {
       "media": [
@@ -48,6 +49,11 @@
           "type": "bitmap",
           "name": "IMAGE_MENU_ICON",
           "file": "menu_icon.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_NOTCH",
+          "file": "notch.png"
         }
       ]
     }
