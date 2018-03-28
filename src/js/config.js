@@ -13,14 +13,14 @@ module.exports =
         "messageKey": "IS_SAYINGS",
         "label": "Enable sayings",
         "defaultValue": false,
-        "description": "Change the NEVER SETTLE text to a random saying; experience the fandom!"
+        "description": "Change the NEVER SETTLE text to a random saying."
       },
       {
         "type": "toggle",
         "messageKey": "IS_NOTCH",
         "label": "Enable notch",
         "defaultValue": false,
-        "description": "Puts a notch on your Pebble screen! Match your OnePlus 6!"
+        "description": "Puts a notch on your Pebble screen!"
       },
       {
         "type": "radiogroup",
@@ -58,7 +58,11 @@ module.exports =
           {
             "label": '<b style="color: #555; background-color: #000; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
             "value": "6"
-          }
+          },
+          {
+            "label": '<b style="color: #000; background-color: #AA0000; border-radius: 5px; display: block; width: 240px; height: 40px; font-weight: bold; line-height: 40px; font-size: 1.5em; text-align: center;">NEVER SETTLE</b>',
+            "value": "7"
+          },
         ]
       },
       {

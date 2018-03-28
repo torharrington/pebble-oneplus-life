@@ -6,7 +6,8 @@ typedef enum
   WhiteBlack,
   BlackWhite,
   Colette,
-  MidnightBlack
+  MidnightBlack,
+  LavaRed
 } WatchTheme;
 
 typedef struct

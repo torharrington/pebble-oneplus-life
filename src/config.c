@@ -41,6 +41,10 @@ void init_setting_theme(WatchSettings *settings, WatchTheme *theme)
       settings->theme.fgColour = GColorDarkGray;
       settings->theme.bgColour = GColorBlack;
       break;
+
+    case LavaRed:
+      settings->theme.fgColour = GColorBlack;
+      settings->theme.bgColour = GColorDarkCandyAppleRed;
   }
 }
 
